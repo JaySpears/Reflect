@@ -3,11 +3,7 @@ var async = require('async'),
     passport = require('passport'),
     app = require('./index').app;
 
-/************************************************/
-/*************** SHOPSYTLE ROUTES ***************/
-/************************************************/
-
-// Binding index.hbs to root. Also bind data from XHR request.
+// Binding index.hbs to root. Also data from XHR request.
 app.get('/', function(req, res) {
     var products, categories;
     async.parallel([
@@ -43,28 +39,30 @@ app.get('/api/:keyword', function(req, res) {
     });
 });
 
-// Retrieve data from wishlist column in DB.
+// Retrieve data from wishlist table based on UID.
 app.get('/api/wishlist/get-wishlist', function(req, res) {
     var getWishlistController = require('./controllers/get-wishlist');
     var currentUserUID = req.cookies.Current_Facebook_User_id;
-    function logit(s){
-        res.json(s);
+    function sendWishlistData(data){
+        res.json(data);
     }
-    getWishlistController.retrieveWishlistMiddleware(currentUserUID, logit);
+    getWishlistController.retrieveWishlistMiddleware(currentUserUID, sendWishlistData);
 });
 
-//
+// Add data to wishlist table based on UID.
 app.post('/api/add-wishlist', function(req, res) {
     var wishlistMiddleware = require('./controllers/add-to-wishlist');
     var currentUserUID = req.cookies.Current_Facebook_User_id;
-    function doesProductExistt(bool) {
+    function doesProductExist(bool) {
         if (bool != '1') {
             wishlistMiddleware.addToWishlist(currentUserUID, req.body);
         }
     }
-    wishlistMiddleware.checkIfProductExistsMiddleware(currentUserUID ,req.body.wishListProduct, doesProductExistt);
+    // Check to see if product exists already. Don't want duplications.
+    wishlistMiddleware.checkIfProductExistsMiddleware(currentUserUID ,req.body.wishListProduct, doesProductExist);
 });
 
+// Remove wishlist product from wishlist table based on UID.
 app.post('/api/remove/wishlist/product', function(req, res) {
     var removeProductController = require('./controllers/remove-from-wishlist');
     var currentUserUID = req.cookies.Current_Facebook_User_id;
@@ -86,6 +84,7 @@ app.get('/auth/facebook/callback',
         failureRedirect: '/'
     }),
     function(req, res) {
+        // Set cookies for current user.
         res.cookie('Current_Facebook_User' , res.req.user.displayName);
         res.cookie('Current_Facebook_User_id' , res.req.user.id);
         res.redirect('/');
