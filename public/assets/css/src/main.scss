@@ -1,0 +1,290 @@
+// Media Queries.
+$mobile: 'screen and (max-width: 767px)';
+$tablet: 'screen and (min-width: 768px) and (max-width: 1023px)';
+$desktop: 'screen and (min-width: 1024px)'; // Colors.
+$primary-color: #43bdec;
+$secondary-color: #e4e4e4;
+$tertiary-color: #2f2e2e; // Fonts.
+$primary-font: 'Verdana';
+.clearfix {
+    display: table;
+    clear: both;
+    content: '';
+}
+body,
+html {
+    height: 100%;
+}
+body {
+    .container{
+        @media #{$mobile} {
+            margin: 0 10px;
+        }
+        @media #{$tablet} {
+            margin: 0 30px;
+        }
+        @media #{$desktop} {
+            max-width: 1040px;
+            margin: 30px auto 0;
+        }
+    }
+    .footer-container{
+        margin: 0 auto;
+        @media #{$desktop} {
+            max-width: 1040px;
+        }
+    }
+}
+
+#wrapper {
+    position: relative;
+    min-height: calc(100% - 272px);
+    @media #{$mobile} {
+        min-height: calc(100% - 234px);
+    }
+}
+.hero {
+    width: 100%;
+    background-color: $tertiary-color;
+    h1 {
+        text-align: center;
+        color: $primary-color;
+        font-size: 80px;
+        margin: 15px 0 0;
+        padding: 7px 0;
+        font-family: 'Pattaya';
+        letter-spacing: 1px;
+        margin-top: 0;
+        border-bottom: 2px solid $primary-color;
+        @media #{$mobile} {
+            font-size: 50px;
+        }
+        @media #{$tablet} {
+            font-size: 65px;
+        }
+    }
+    nav {
+        background-color: $secondary-color;
+        width: 100%;
+        border-bottom: 2px solid lightgrey;
+        text-align: center;
+        i {
+            font-size: 20px;
+            position: relative;
+            top: 2.5px;
+            color: $primary-color;
+        }
+        p {
+            font-family: $primary-font;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 8px;
+            display: inline-block;
+            height: 100%;
+            margin: auto;
+            margin-top: -2px;
+            &.fb{
+                height: 37px;
+                padding: 10.5px 0px 8px 0px;
+                text-transform: none;
+                font-size: 14px;
+                a{
+                    text-decoration: none;
+                    a{
+                        color: $primary-color;
+                    }
+                    span{
+                        color: $primary-color;
+                    }
+                }
+            }
+            a {
+                letter-spacing: 0.5px;
+                font-weight: 600;
+                color: $tertiary-color;
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+.loupe {
+    border: 2px solid $tertiary-color;
+    background-color: white;
+}
+.form-wrapper {
+    padding: 0;
+    background-color: white;
+}
+form {
+    width: auto;
+    margin: 0 auto;
+    padding-top: 15px;
+    input {
+        outline: none;
+        width: 300px;
+        border: none;
+        font-size: 32px;
+        background-color: white;
+        border-bottom: 2px solid $primary-color;
+        height: 60px;
+        font-family: $primary-font;
+        padding-left: 10px;
+        color: $tertiary-color;
+        @media #{$mobile} {
+            width: 225px;
+        }
+    }
+    button {
+        height: 50px;
+        outline: none;
+        background-color: white;
+        border: none;
+        border-bottom: 2px solid $primary-color;
+        padding: 0 15px;
+        i {
+            font-size: 30px !important;
+            position: relative;
+            top: -6px;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+.container {
+    padding-bottom: 80px;
+    margin-top: 30px;
+    @media #{$mobile} {
+        margin-top: 0;
+    }
+    #loader {
+        display: none;
+        text-align: center;
+        margin-top: 150px;
+        @media #{$mobile} {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-top: 100px;
+        }
+        img {
+            width: 120px;
+        }
+    }
+    .products {
+        text-align: center;
+        font-family: $primary-font;
+        .row {
+            min-height: 400px;
+        }
+        .col-md-4 {
+            padding: 20px;
+        }
+        .image-wrapper {
+            cursor: pointer;
+            height: 200px;
+            text-align: center;
+            display: table;
+            width: 100%;
+            .vertically-align {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            img {
+                max-height: 180px;
+                max-width: 300px;
+                margin: 0 auto;
+                @media #{$mobile} {
+                    max-width: 200px;
+                }
+            }
+        }
+        .product-name {
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+    }
+}
+.pagination-wrapper {
+    text-align: center;
+    @media #{$mobile} {
+        position: relative;
+        top: 20px;
+    }
+    .easyPaginateNav {
+        display: inline-block;
+        width: auto !important;
+        a {
+            font-family: $primary-font;
+            padding: 9px 13px;
+            margin: 5px;
+            color: $tertiary-color;
+            font-weight: 600;
+            @media #{$mobile} {
+                margin: 1px;
+            }
+            &:hover {
+                text-decoration: none;
+                color: $primary-color;
+            }
+            &.current {
+                color: $secondary-color;
+                background-color: $primary-color;
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+            &.first,
+            &.last {
+                display: none;
+            }
+        }
+    }
+}
+.wishlist-wrapper{
+    display: none;
+    position: absolute;
+    top: -246px;
+    right: 0;
+    height: 100vh;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    .wishlist-modal{
+        top: 300px;
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px 30px;
+    }
+}
+.sticky-div {
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    footer {
+        background-color: $secondary-color;
+        padding: 20px 0;
+        border-top: 2px solid lightgrey;
+        margin-top: 40px;
+        p {
+            font-weight: 600;
+            font-family: $primary-font;
+            color: $tertiary-color;
+            text-align: center;
+            margin-bottom: 0;
+            &:nth-child(2) {
+                font-weight: 600;
+            }
+            &:nth-child(2) {
+                font-size: 10px;
+            }
+        }
+    }
+}

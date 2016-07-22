@@ -1,0 +1,25 @@
+{
+  "name": "Reflect",
+  "description": "Online shopping website.",
+  "main": "index.js",
+  "authors": [
+    "Joshua Spears"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "normalize-css": "normalize.css#~4.1.1"
+  },
+  "devDependencies": {
+    "jquery-ui": "^1.11.4"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Reflect</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <link href='https://fonts.googleapis.com/css?family=Pattaya' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Exo:400,400italic,500,500italic,600,600italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="public/bower_components/normalize-css/normalize.css" charset="utf-8">
+    <link rel="stylesheet" href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" charset="utf-8">
+    <link rel="stylesheet" href="public/assets/css/main.min.css" charset="utf-8">
+</head>
+<body>
+    <div class="hero">
+        <h1>Reflect</h1>
+        <nav class="clearfix">
+            <p class="login-nav"><a href="/auth/facebook">Login with {{user}}<i class="fa fa-facebook-square" aria-hidden="true"></i></a></p>
+        </nav>
+        <div class="form-wrapper">
+            <form method="post" class="clearfix">
+                <input type="text" name="keyword" value="" placeholder=" " autofocus>
+                <button type="button" name="keyword"><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div class="container">
+            <div id="loader">
+                <img src="public/assets/img/ajax-loader.gif" alt="Loading..." />
+            </div>
+            <div class="products">
+                {{#wrap_products 3 allProducts.0.products}}
+                    <div class="row">
+                        {{#each this}}
+                            <div class="col-md-4">
+                                <div class="image-wrapper">
+                                    <div class="vertically-align">
+                                        <img src="{{this.image.sizes.Best.url}}" alt="Product Image" />
+                                    </div>
+                                </div>
+                                <p class="product-name">{{this.name}}</p>
+                                <p><i>{{this.priceLabel}}</i> | <a class="buy-link" href="{{this.pageUrl}}"><b>Buy Now!</b></a></p>
+                                <p><a href="#" class="wishlist"></a></p>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/wrap_products}}
+                </ul>
+            </div>
+        </div>
+        <div class="wishlist-wrapper">
+            <div class="wishlist-modal">
+                <p class="close-modal">X</p>
+                <p class="no-items">You haven't added any products to your wishlist yet!</p>
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+        <div class="sticky-div">
+            <footer>
+                <div class="footer-container">
+                    <p>&copy; Reflect.</p>
+                    <p>Copyright (c) 2016 Copyright Holder All Rights Reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="public/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="public/assets/js/vendors/jquery.loupe.min.js" charset="utf-8"></script>
+    <script src="public/assets/js/vendors/jquery.easyPaginate.js" charset="utf-8"></script>
+    <script src="public/bower_components/typed.js/dist/typed.min.js" charset="utf-8"></script>
+    <script src="public/bower_components/jquery-ui/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="public/bower_components/js-cookie/src/js.cookie.js" charset="utf-8"></script>
+    <script src="public/bower_components/jquery-ui/ui/minified/effect.min.js" charset="utf-8"></script>
+    <script src="public/bower_components/jquery-ui/ui/minified/slider.min.js" charset="utf-8"></script>
+    <script src="public/bower_components/jquery-ui/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="public/assets/js/main.min.js" charset="utf-8"></script>
+</body>
+
+</html>

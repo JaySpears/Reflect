@@ -1,0 +1,244 @@
+.clearfix {
+  display: table;
+  clear: both;
+  content: ''; }
+
+body,
+html {
+  height: 100%; }
+
+@media screen and (max-width: 767px) {
+  body .container {
+    margin: 0 10px; } }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body .container {
+    margin: 0 30px; } }
+
+@media screen and (min-width: 1024px) {
+  body .container {
+    max-width: 1040px;
+    margin: 30px auto 0; } }
+
+body .footer-container {
+  margin: 0 auto; }
+  @media screen and (min-width: 1024px) {
+    body .footer-container {
+      max-width: 1040px; } }
+
+#wrapper {
+  position: relative;
+  min-height: calc(100% - 272px); }
+  @media screen and (max-width: 767px) {
+    #wrapper {
+      min-height: calc(100% - 234px); } }
+
+.hero {
+  width: 100%;
+  background-color: #2f2e2e; }
+  .hero h1 {
+    text-align: center;
+    color: #43bdec;
+    font-size: 80px;
+    margin: 15px 0 0;
+    padding: 7px 0;
+    font-family: 'Pattaya';
+    letter-spacing: 1px;
+    margin-top: 0;
+    border-bottom: 2px solid #43bdec; }
+    @media screen and (max-width: 767px) {
+      .hero h1 {
+        font-size: 50px; } }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      .hero h1 {
+        font-size: 65px; } }
+  .hero nav {
+    background-color: #e4e4e4;
+    width: 100%;
+    border-bottom: 2px solid lightgrey;
+    text-align: center; }
+    .hero nav i {
+      font-size: 20px;
+      position: relative;
+      top: 2.5px;
+      color: #43bdec; }
+    .hero nav p {
+      font-family: "Verdana";
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 8px;
+      display: inline-block;
+      height: 100%;
+      margin: auto;
+      margin-top: -2px; }
+      .hero nav p.fb {
+        height: 37px;
+        padding: 10.5px 0px 8px 0px;
+        text-transform: none;
+        font-size: 14px; }
+        .hero nav p.fb a {
+          text-decoration: none; }
+          .hero nav p.fb a a {
+            color: #43bdec; }
+          .hero nav p.fb a span {
+            color: #43bdec; }
+      .hero nav p a {
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        color: #2f2e2e; }
+        .hero nav p a:hover {
+          text-decoration: none; }
+
+.loupe {
+  border: 2px solid #2f2e2e;
+  background-color: white; }
+
+.form-wrapper {
+  padding: 0;
+  background-color: white; }
+
+form {
+  width: auto;
+  margin: 0 auto;
+  padding-top: 15px; }
+  form input {
+    outline: none;
+    width: 300px;
+    border: none;
+    font-size: 32px;
+    background-color: white;
+    border-bottom: 2px solid #43bdec;
+    height: 60px;
+    font-family: "Verdana";
+    padding-left: 10px;
+    color: #2f2e2e; }
+    @media screen and (max-width: 767px) {
+      form input {
+        width: 225px; } }
+  form button {
+    height: 50px;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid #43bdec;
+    padding: 0 15px; }
+    form button i {
+      font-size: 30px !important;
+      position: relative;
+      top: -6px;
+      transition: all 0.3s ease-in-out; }
+      form button i:hover {
+        color: #43bdec; }
+
+.container {
+  padding-bottom: 80px;
+  margin-top: 30px; }
+  @media screen and (max-width: 767px) {
+    .container {
+      margin-top: 0; } }
+  .container #loader {
+    display: none;
+    text-align: center;
+    margin-top: 150px; }
+    @media screen and (max-width: 767px) {
+      .container #loader {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-top: 100px; } }
+    .container #loader img {
+      width: 120px; }
+  .container .products {
+    text-align: center;
+    font-family: "Verdana"; }
+    .container .products .row {
+      min-height: 400px; }
+    .container .products .col-md-4 {
+      padding: 20px; }
+    .container .products .image-wrapper {
+      cursor: pointer;
+      height: 200px;
+      text-align: center;
+      display: table;
+      width: 100%; }
+      .container .products .image-wrapper .vertically-align {
+        display: table-cell;
+        vertical-align: middle; }
+      .container .products .image-wrapper img {
+        max-height: 180px;
+        max-width: 300px;
+        margin: 0 auto; }
+        @media screen and (max-width: 767px) {
+          .container .products .image-wrapper img {
+            max-width: 200px; } }
+    .container .products .product-name {
+      margin-top: 10px;
+      padding-top: 10px; }
+
+.pagination-wrapper {
+  text-align: center; }
+  @media screen and (max-width: 767px) {
+    .pagination-wrapper {
+      position: relative;
+      top: 20px; } }
+  .pagination-wrapper .easyPaginateNav {
+    display: inline-block;
+    width: auto !important; }
+    .pagination-wrapper .easyPaginateNav a {
+      font-family: "Verdana";
+      padding: 9px 13px;
+      margin: 5px;
+      color: #2f2e2e;
+      font-weight: 600; }
+      @media screen and (max-width: 767px) {
+        .pagination-wrapper .easyPaginateNav a {
+          margin: 1px; } }
+      .pagination-wrapper .easyPaginateNav a:hover {
+        text-decoration: none;
+        color: #43bdec; }
+      .pagination-wrapper .easyPaginateNav a.current {
+        color: #e4e4e4;
+        background-color: #43bdec; }
+        .pagination-wrapper .easyPaginateNav a.current:hover {
+          color: #e4e4e4; }
+      .pagination-wrapper .easyPaginateNav a.first, .pagination-wrapper .easyPaginateNav a.last {
+        display: none; }
+
+.wishlist-wrapper {
+  display: none;
+  position: absolute;
+  top: -246px;
+  right: 0;
+  height: 100vh;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6); }
+  .wishlist-wrapper .wishlist-modal {
+    top: 300px;
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px 30px; }
+
+.sticky-div {
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+  .sticky-div footer {
+    background-color: #e4e4e4;
+    padding: 20px 0;
+    border-top: 2px solid lightgrey;
+    margin-top: 40px; }
+    .sticky-div footer p {
+      font-weight: 600;
+      font-family: "Verdana";
+      color: #2f2e2e;
+      text-align: center;
+      margin-bottom: 0; }
+      .sticky-div footer p:nth-child(2) {
+        font-weight: 600; }
+      .sticky-div footer p:nth-child(2) {
+        font-size: 10px; }
