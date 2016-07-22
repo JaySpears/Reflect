@@ -7,7 +7,6 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     passport = require('passport'),
-    cookieParser = require('cookie-parser'),
     configAuth = require('./config/auth'),
     app = express();
 
@@ -28,8 +27,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(cookieParser());
-
 // Setting the view engine to compile handlebars files
 app.set('view engine', '.hbs');
 
@@ -39,18 +36,10 @@ app.use(passport.session({
     secret: 'idk'
 }));
 
-// Passport configuration.
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    done(null, null);
-});
-
 // Require User model.
 var User = require('./models/users');
 
+// Set up facebook configuration for User.
 passport.use(new FacebookStrategy({
         clientID: configAuth.facebookAuth.clientID,
         clientSecret: configAuth.facebookAuth.clientSecret,
@@ -66,11 +55,16 @@ passport.use(new FacebookStrategy({
                 User.pushToDataBase(userInformation.id, userInformation.displayName);
             }
         }
+        // Check if user already exists in the DB, if not, add them!
         User.seeIfUserExists(userInformation.id, doesUserExist);
         return cb(null, profile);
     }
 ));
 
+// Serialize passport user.
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
 
 // Allowing app to use static CSS and JavaScript files.
 app.use(express.static(__dirname));
