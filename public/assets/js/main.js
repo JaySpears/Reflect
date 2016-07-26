@@ -13,13 +13,19 @@
             typeSpeed: 20
         });
 
-        $('.close-modal').on('click', function(){
-            $('.wishlist-wrapper').hide();
-        })
+        keywordInput.keypress(function(e) {
+            if (e.which == 13) {
+                retrieveProducts();
+            }
+        });
 
-        // Send request to server to request data of user search input.
         submitKeywordButton.on('click', function() {
+            retrieveProducts();
+        });
+
+        function retrieveProducts() {
             // Show ajax loader, hide all products.
+            $('.pagination-wrapper').remove();
             $('#loader').show();
             $('.products').hide();
             // Ajax request.
@@ -55,7 +61,6 @@
                     $('.vertically-align > img').loupe();
 
                     // Remove previous pagination, and updated it for new requested products.
-                    $('.pagination-wrapper').remove();
                     $('.products').easyPaginate({
                         paginateElement: $('.products > div'),
                         elementsPerPage: 3,
@@ -73,6 +78,12 @@
                     console.log(message.statusText);
                 }
             });
+        }
+
+        // Close wishlist modal.
+        $('.close-modal').on('click', function() {
+            $('.wishlist-wrapper').hide();
+            $('body').removeClass('wishlist-open');
         });
 
         // Add pagination to products on initial load.
@@ -99,7 +110,8 @@
             wishlistAnchor.html('What\'s up ' + userFirstName[0] + '! <a href="#">Click here to check out your Wishlist!').attr('href', '#');
             addToWishlist.html('Add to Wishlist!');
 
-            addToWishlist.on('click', function(){
+            addToWishlist.on('click', function(e) {
+                e.preventDefault();
                 var wishlistParentWrapper = $(this).parent().parent();
                 var wishlistData = {
                     wishListImage: wishlistParentWrapper.find('img').attr('src'),
@@ -112,44 +124,50 @@
                     method: "POST",
                     data: wishlistData,
                     success: function(data) {
-                        console.log(data);
+                        console.log('Product pushed to Wishlist table.');
                     }
                 });
             });
 
-            wishlistAnchor.on('click', function(){
+            wishlistAnchor.on('click', function() {
                 $.ajax({
                     url: "http://localhost:3000/api/wishlist/get-wishlist",
                     method: "GET",
                     success: function(data) {
-                        console.log(data);
                         var wishlistMarkup = '';
                         if (data.length != 0) {
                             $('.no-items').hide();
                             for (var i = 0; i < data.length; i++) {
-                                wishlistMarkup += '<li data-id="' + data[i].id + '"><img style="max-width: 100px" src="' + data[i].product_image_src + '"><p>' + data[i].product_title + '</p><p>' + data[i].product_price + '<a href="' +  data[i].product_url+'">Buy Now</a></p><p class="remove-wishlist-item">Remove</p></li>';
+                                wishlistMarkup += '<tr data-id="' + data[i].id + '"><td><img style="max-width: 100px" src="' + data[i].product_image_src + '"></td><td><p>' + data[i].product_title + '</p><p><i>' + data[i].product_price + '</i><a href="' + data[i].product_url + '"> | <b>Buy Now</b></a></p><p class="remove-wishlist-item">Remove</p></td></tr>';
                             }
                         } else {
                             $('.no-items').show();
                         }
+
                         $('.wishlist-wrapper').show();
-                        $('.wishlist-modal ul').html('');
-                        $('.wishlist-modal ul').append(wishlistMarkup);
+                        $('body').addClass('wishlist-open');
+                        $('.wishlist-modal table tbody').html('');
+                        $('.wishlist-modal table tbody').append(wishlistMarkup);
                     }
-                }).then(function(){
+                }).then(function() {
                     var removeWishListItem = $('.remove-wishlist-item');
-                    removeWishListItem.on('click', function(){
-                        var wishlistItem = $(this).parent();
-                        var productID = $(this).parent().data('id');
-                        wishlistItem.hide();
+                    removeWishListItem.on('click', function() {
+                        var wishlistItem = $(this).parent().parent();
+                        var productID = $(this).parent().parent().data('id');
+                        wishlistItem.remove();
+                        if ($('.wishlist-modal table tbody tr').length == 0) {
+                            $('.no-items').show();
+                        }
                         $.ajax({
                             url: "http://localhost:3000/api/remove/wishlist/product",
                             method: "POST",
-                            data: {dude: productID},
-                            success: function(data) {
-                                console.log(data);
+                            data: {
+                                pid: productID
                             },
-                            error: function(err){
+                            success: function(data) {
+                                console.log('Product removed from Wishlist table.');
+                            },
+                            error: function(err) {
                                 console.log(err);
                             }
                         });

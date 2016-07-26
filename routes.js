@@ -52,6 +52,7 @@ app.get('/api/wishlist/get-wishlist', function(req, res) {
 // Add data to wishlist table based on UID.
 app.post('/api/add-wishlist', function(req, res) {
     var wishlistMiddleware = require('./controllers/add-to-wishlist');
+    console.log(req.cookies);
     var currentUserUID = req.cookies.Current_Facebook_User_id;
     function doesProductExist(bool) {
         if (bool != '1') {
@@ -66,7 +67,7 @@ app.post('/api/add-wishlist', function(req, res) {
 app.post('/api/remove/wishlist/product', function(req, res) {
     var removeProductController = require('./controllers/remove-from-wishlist');
     var currentUserUID = req.cookies.Current_Facebook_User_id;
-    removeProductController.getProductId(req.body.dude, currentUserUID);
+    removeProductController.getProductId(req.body.pid, currentUserUID);
 });
 
 /***********************************************/

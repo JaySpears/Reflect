@@ -18,7 +18,7 @@
             <p class="login-nav"><a href="/auth/facebook">Login with {{user}}<i class="fa fa-facebook-square" aria-hidden="true"></i></a></p>
         </nav>
         <div class="form-wrapper">
-            <form method="post" class="clearfix">
+            <form onsubmit="return false;" class="clearfix">
                 <input type="text" name="keyword" value="" placeholder=" " autofocus>
                 <button type="button" name="keyword"><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
             </form>
@@ -50,12 +50,14 @@
             </div>
         </div>
         <div class="wishlist-wrapper">
-            <div class="wishlist-modal">
+            <div class="wishlist-modal clearfix">
                 <p class="close-modal">X</p>
                 <p class="no-items">You haven't added any products to your wishlist yet!</p>
-                <ul>
+                <table>
+                    <tbody style="height: 30px; overflow-y: scroll">
 
-                </ul>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="sticky-div">

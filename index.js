@@ -5,6 +5,7 @@ var express = require('express'),
     FacebookStrategy = require('passport-facebook').Strategy,
     passport = require('passport'),
     bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
     configAuth = require('./config/auth'),
@@ -26,6 +27,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+// Allow usage of cookies.
+app.use(cookieParser());
 
 // Setting the view engine to compile handlebars files
 app.set('view engine', '.hbs');
