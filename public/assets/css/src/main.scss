@@ -283,26 +283,28 @@ form {
             right: 0;
             text-align: center;
         }
-        table{
-            border-collapse: separate;
-            border-spacing: 10px 20px;
-            tr{
-                td{
-                    &:nth-child(2){
-                        padding-left: 20px;
-                    }
-                    p{
-                        &:nth-child(1){
-                            margin-bottom: 0px;
-                        }
-                    }
-                    .remove-wishlist-item{
-                        cursor: pointer;
-                        color: $tertiary-color;
-                        font-weight: 500;
-                        margin-bottom: 0px;
-                    }
+        .products-wrapper{
+            max-height: 450px;
+            overflow: hidden
+            overflow-y: scroll;
+            > div{
+                margin-bottom: 20px;
+            }
+            .col-md-4{
+                padding-left: 0px;
+            }
+            .col-md-8{
+                padding-top: 5px;
+                padding-right: 0px;
+                p{
+                    margin-bottom: 0px;
                 }
+            }
+            .remove-wishlist-item{
+                cursor: pointer;
+                color: $tertiary-color;
+                font-weight: 500;
+                margin-bottom: 0px;
             }
         }
     }
@@ -332,4 +334,18 @@ form {
             }
         }
     }
+}
+.error-modal{
+    display: none;
+    position: absolute;;
+    width: 500px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px 30px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
 }

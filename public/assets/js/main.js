@@ -30,7 +30,7 @@
             $('.products').hide();
             // Ajax request.
             $.ajax({
-                url: "http://localhost:3000/api/" + keywordInput.val(),
+                url: "/api/" + keywordInput.val(),
                 method: "GET",
                 success: function(data) {
                     // Hide ajax loader, show all products.
@@ -44,9 +44,9 @@
                     for (var i = 0; i < allProducts.products.length; i++) {
                         var brandName = '';
                         if (currentFacebookUser != undefined) {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" href="' + allProducts.products[i].pageUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
                         } else {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" href="' + allProducts.products[i].pageUrl + '">Buy Now!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '">Buy Now!</a></p></div>';
                         }
                     }
                     $('.products').html(requestedData);
@@ -92,7 +92,7 @@
                     }
                     console.log(wishlistData);
                     $.ajax({
-                        url: "http://localhost:3000/api/add-wishlist",
+                        url: "/api/add-wishlist",
                         method: "POST",
                         data: wishlistData,
                         success: function(data) {
@@ -132,7 +132,7 @@
                         wishListProductUrl: wishlistParentWrapper.find('.buy-link').attr('href')
                     }
                     $.ajax({
-                        url: "http://localhost:3000/api/add-wishlist",
+                        url: "/api/add-wishlist",
                         method: "POST",
                         data: wishlistData,
                         success: function(data) {
@@ -165,7 +165,7 @@
                     wishListProductUrl: wishlistParentWrapper.find('.buy-link').attr('href')
                 }
                 $.ajax({
-                    url: "http://localhost:3000/api/add-wishlist",
+                    url: "/api/add-wishlist",
                     method: "POST",
                     data: wishlistData,
                     success: function(data) {
@@ -176,7 +176,7 @@
 
             wishlistAnchor.on('click', function() {
                 $.ajax({
-                    url: "http://localhost:3000/api/wishlist/get-wishlist",
+                    url: "/api/wishlist/get-wishlist",
                     method: "GET",
                     success: function(data) {
                         console.log(data);
@@ -184,7 +184,7 @@
                         if (data.length != 0) {
                             $('.no-items').hide();
                             for (var i = 0; i < data.length; i++) {
-                                wishlistMarkup += '<div class="clearfix" data-id="' + data[i].id + '"><div class="col-md-4"><img style="max-width: 100px" src="' + data[i].product_image_src + '"></div><div class="col-sm-8"><p>' + data[i].product_title + '</p><p><i>' + data[i].product_price + '</i><a href="' + data[i].product_url + '"> | <b>Buy Now</b></a></p><p class="remove-wishlist-item">Remove</p></div></div>';
+                                wishlistMarkup += '<div class="col-md-12" data-id="' + data[i].id + '"><div class="col-md-4"><img style="max-width: 100px" src="' + data[i].product_image_src + '"></div><div class="col-md-8"><p>' + data[i].product_title + '</p><p><i>' + data[i].product_price + '</i> | <a target="_blank" href="' + data[i].product_url + '"> <b>Buy Now</b></a></p><p class="remove-wishlist-item">Remove</p></div></div>';
                             }
                         } else {
                             $('.no-items').show();
@@ -194,12 +194,6 @@
                         $('body').addClass('wishlist-open');
                         $('.wishlist-modal .products-wrapper').html('');
                         $('.wishlist-modal .products-wrapper').append(wishlistMarkup);
-                        $('.products-wrapper').easyPaginate({
-                            paginateElement: $('.products-wrapper > div'),
-                            elementsPerPage: 5,
-                            effect: 'default'
-                        });
-                        $('.wishlist-modal .easyPaginateNav:not(:first)').remove();
                     }
                 }).then(function() {
                     var removeWishListItem = $('.remove-wishlist-item');
@@ -211,7 +205,7 @@
                             $('.no-items').show();
                         }
                         $.ajax({
-                            url: "http://localhost:3000/api/remove/wishlist/product",
+                            url: "/api/remove/wishlist/product",
                             method: "POST",
                             data: {
                                 pid: productID
