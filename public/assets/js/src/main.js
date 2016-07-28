@@ -115,9 +115,17 @@
             elementsPerPage: 3,
             effect: 'default'
         });
+
         $('.easyPaginateNav').wrap('<div class="pagination-wrapper"></div>');
         $('.easyPaginateNav a').on('click', function(e) {
+            console.log('yes');
             e.preventDefault();
+            if ($(window).width() <= 767) {
+                console.log('true');
+                $('body, html').animate({
+                    scrollTop: $('body').offset().top - 10
+                }, 700)
+            }
             if (currentFacebookUser != undefined) {
                 var addToWishlist = $('.wishlist');
                 addToWishlist.html('Add to Wishlist!');

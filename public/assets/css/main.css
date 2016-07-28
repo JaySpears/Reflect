@@ -27,7 +27,10 @@ body .footer-container {
       max-width: 1040px; } }
 
 body.wishlist-open {
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed; }
 
 #wrapper {
   position: relative;
@@ -79,6 +82,10 @@ body.wishlist-open {
         padding: 10.5px 0px 8px 0px;
         text-transform: none;
         font-size: 14px; }
+        @media screen and (max-width: 767px) {
+          .hero nav p.fb {
+            font-size: 13px;
+            padding: 8px 0 41px 0px; } }
         .hero nav p.fb a {
           text-decoration: none; }
           .hero nav p.fb a a {
@@ -104,6 +111,9 @@ form {
   width: auto;
   margin: 0 auto;
   padding-top: 15px; }
+  @media screen and (max-width: 767px) {
+    form {
+      padding: 10px; } }
   form input {
     outline: none;
     width: 300px;
@@ -138,7 +148,8 @@ form {
   margin-top: 30px; }
   @media screen and (max-width: 767px) {
     .container {
-      margin-top: 0; } }
+      margin-top: 0;
+      padding: 0px; } }
   .container #loader {
     display: none;
     text-align: center;
@@ -158,12 +169,18 @@ form {
       min-height: 400px; }
     .container .products .col-md-4 {
       padding: 20px; }
+      @media screen and (max-width: 767px) {
+        .container .products .col-md-4 {
+          padding: 25px 10px; } }
     .container .products .image-wrapper {
       cursor: pointer;
       height: 200px;
       text-align: center;
       display: table;
       width: 100%; }
+      @media screen and (max-width: 767px) {
+        .container .products .image-wrapper {
+          height: auto; } }
       .container .products .image-wrapper .vertically-align {
         display: table-cell;
         vertical-align: middle; }
@@ -177,6 +194,17 @@ form {
     .container .products .product-name {
       margin-top: 10px;
       padding-top: 10px; }
+    @media screen and (max-width: 767px) {
+      .container .products p {
+        margin-bottom: 0px; } }
+    .container .products .buy-link {
+      color: #43bdec; }
+    .container .products .wishlist {
+      position: relative;
+      top: 5px;
+      padding-top: 5px;
+      font-weight: 600;
+      color: #2f2e2e; }
 
 .pagination-wrapper {
   text-align: center; }
@@ -215,6 +243,9 @@ form {
   height: 100vh;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6); }
+  @media screen and (max-width: 767px) {
+    .wishlist-wrapper {
+      top: -200px; } }
   .wishlist-wrapper .wishlist-modal {
     position: absolute;
     width: 500px;
@@ -226,6 +257,10 @@ form {
     right: 0;
     bottom: 0;
     left: 0; }
+    @media screen and (max-width: 767px) {
+      .wishlist-wrapper .wishlist-modal {
+        width: 100%;
+        padding: 20px 10px; } }
     .wishlist-wrapper .wishlist-modal .close-modal {
       float: right;
       cursor: pointer;
@@ -241,18 +276,32 @@ form {
       left: 0;
       right: 0;
       text-align: center; }
+      @media screen and (max-width: 767px) {
+        .wishlist-wrapper .wishlist-modal .no-items {
+          position: relative;
+          margin-bottom: 0px; } }
     .wishlist-wrapper .wishlist-modal .products-wrapper {
       max-height: 450px;
       overflow-y: scroll; }
+      @media screen and (max-width: 767px) {
+        .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-12 {
+          text-align: center;
+          padding: 0px; } }
       .wishlist-wrapper .wishlist-modal .products-wrapper > div {
         margin-bottom: 20px; }
       .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-4 {
         padding-left: 0px; }
+        @media screen and (max-width: 767px) {
+          .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-4 {
+            padding-left: 15px; } }
       .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-8 {
         padding-top: 5px;
         padding-right: 0px; }
         .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-8 p {
           margin-bottom: 0px; }
+        @media screen and (max-width: 767px) {
+          .wishlist-wrapper .wishlist-modal .products-wrapper .col-md-8 {
+            padding-right: 15px; } }
       .wishlist-wrapper .wishlist-modal .products-wrapper .remove-wishlist-item {
         cursor: pointer;
         color: #2f2e2e;
@@ -265,6 +314,9 @@ form {
   bottom: 0;
   left: 0;
   width: 100%; }
+  @media screen and (max-width: 767px) {
+    .sticky-div {
+      height: 0px; } }
   .sticky-div footer {
     background-color: #e4e4e4;
     padding: 20px 0;
@@ -276,10 +328,9 @@ form {
       color: #2f2e2e;
       text-align: center;
       margin-bottom: 0; }
-      .sticky-div footer p:nth-child(2) {
-        font-weight: 600; }
-      .sticky-div footer p:nth-child(2) {
-        font-size: 10px; }
+      @media screen and (max-width: 767px) {
+        .sticky-div footer p {
+          font-size: 11px; } }
 
 .error-modal {
   display: none;
