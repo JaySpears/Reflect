@@ -14,7 +14,7 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('public/assets/css'));
 });
 
-// Task to minify CSS, and rename file to have have .min suffix.
+// Task to minify CSS, and rename file to have have .min suffix
 gulp.task('minify-css', function() {
     return gulp.src('public/assets/css/main.css')
         .pipe(cleanCSS())
