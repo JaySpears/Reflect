@@ -1,11 +1,20 @@
 'use strict';
 (function($) {
+
     $(document).ready(function() {
         // Global variables.
         var viewportWidth = $(window).width();
         var keywordInput = $('input[name="keyword"]');
         var submitKeywordButton = $('button[name="keyword"]');
         var currentFacebookUser = Cookies.get('Current_Facebook_User');
+
+        $(window).on('load', function(e){
+            if (window.location.hash == '#_=_') {
+                window.location.hash = ''; // for older browsers, leaves a # behind
+                history.pushState('', document.title, window.location.pathname); // nice and clean
+                e.preventDefault(); // no page reload
+            }
+        })
 
         // Auto type into search field for decoration.
         keywordInput.typed({
