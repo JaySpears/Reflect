@@ -17,12 +17,6 @@ html {
 }
 body {
     .container{
-        @media #{$mobile} {
-            margin: 0 10px;
-        }
-        @media #{$tablet} {
-            margin: 0 30px;
-        }
         @media #{$desktop} {
             max-width: 1040px;
             margin: 30px auto 0;
@@ -123,9 +117,13 @@ body {
     border: 2px solid $tertiary-color;
     background-color: white;
 }
-.form-wrapper,
-.search-helper {
+.form-wrapper {
     padding: 0;
+    background-color: white;
+}
+
+.search-helper{
+    padding: 0px 10px;
     background-color: white;
 }
 
@@ -217,6 +215,10 @@ form {
         font-family: $primary-font;
         .row {
             min-height: 400px;
+            @media #{$mobile}{
+                margin: 0px !important;
+                min-height: auto;
+            }
         }
         .col-md-4 {
             padding: 20px;

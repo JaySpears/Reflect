@@ -8,7 +8,7 @@ app.get('/', function(req, res) {
     var products, categories;
     async.parallel([
         function(next) {
-            request('http://api.shopstyle.com/api/v2/products?fts=snapbacks&pid=uid2201-34493899-95&offset=0&limit=1000', function(error, response, body) {
+            request('http://api.shopstyle.com/api/v2/products?fts=snapbacks&pid=uid2201-34493899-95&offset=0&limit=100s', function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     products = body;
                     next(null, JSON.parse(products));

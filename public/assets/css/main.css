@@ -7,14 +7,6 @@ body,
 html {
   height: 100%; }
 
-@media screen and (max-width: 767px) {
-  body .container {
-    margin: 0 10px; } }
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  body .container {
-    margin: 0 30px; } }
-
 @media screen and (min-width: 1024px) {
   body .container {
     max-width: 1040px;
@@ -103,9 +95,12 @@ body.wishlist-open {
   border: 2px solid #2f2e2e;
   background-color: white; }
 
-.form-wrapper,
-.search-helper {
+.form-wrapper {
   padding: 0;
+  background-color: white; }
+
+.search-helper {
+  padding: 0px 10px;
   background-color: white; }
 
 .search-helper p {
@@ -183,6 +178,10 @@ form {
     font-family: "Verdana"; }
     .container .products .row {
       min-height: 400px; }
+      @media screen and (max-width: 767px) {
+        .container .products .row {
+          margin: 0px !important;
+          min-height: auto; } }
     .container .products .col-md-4 {
       padding: 20px; }
       @media screen and (max-width: 767px) {
