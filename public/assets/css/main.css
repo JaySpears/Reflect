@@ -162,6 +162,15 @@ form {
         margin-top: 100px; } }
     .container #loader img {
       width: 120px; }
+  .container .no-products {
+    display: none;
+    text-align: center; }
+    .container .no-products p {
+      font-size: 24px; }
+    .container .no-products i {
+      margin-top: 60px;
+      font-size: 120px;
+      color: #43bdec; }
   .container .products {
     text-align: center;
     font-family: "Verdana"; }
@@ -228,6 +237,7 @@ form {
         text-decoration: none;
         color: #43bdec; }
       .pagination-wrapper .easyPaginateNav a.current {
+        border-radius: 8px;
         color: #e4e4e4;
         background-color: #43bdec; }
         .pagination-wrapper .easyPaginateNav a.current:hover {
@@ -272,14 +282,11 @@ form {
       right: 12px;
       top: 12px; }
     .wishlist-wrapper .wishlist-modal .no-items {
-      position: absolute;
       left: 0;
       right: 0;
-      text-align: center; }
-      @media screen and (max-width: 767px) {
-        .wishlist-wrapper .wishlist-modal .no-items {
-          position: relative;
-          margin-bottom: 0px; } }
+      text-align: center;
+      position: relative;
+      margin-bottom: 0px; }
     .wishlist-wrapper .wishlist-modal .products-wrapper {
       max-height: 450px;
       overflow-y: scroll; }
@@ -323,11 +330,12 @@ form {
     border-top: 2px solid lightgrey;
     margin-top: 40px; }
     .sticky-div footer p {
-      font-weight: 600;
       font-family: "Verdana";
       color: #2f2e2e;
       text-align: center;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      font-size: 12px;
+      padding: 5px 0px; }
       @media screen and (max-width: 767px) {
         .sticky-div footer p {
           font-size: 11px; } }

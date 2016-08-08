@@ -30,6 +30,7 @@
 
         function retrieveProducts() {
             // Show ajax loader, hide all products.
+            $('.no-products').hide();
             $('.pagination-wrapper').remove();
             $('#loader').show();
             $('.products').hide();
@@ -58,23 +59,28 @@
 
                     // Wrap every three products in a row.
                     var allProductElements = $('.products > div');
-                    for (var i = 0; i < allProductElements.length; i += 3) {
-                        allProductElements.slice(i, i + 3).wrapAll("<div class='row'></div>");
+
+                    if (allProductElements.length == 0) {
+                        $('.no-products').show();
+                    } else {
+                        for (var i = 0; i < allProductElements.length; i += 3) {
+                            allProductElements.slice(i, i + 3).wrapAll("<div class='row'></div>");
+                        }
+                        $('.vertically-align > img').loupe();
+
+                        // Remove previous pagination, and updated it for new requested products.
+                        $('.products').easyPaginate({
+                            paginateElement: $('.products > div'),
+                            elementsPerPage: 3,
+                            effect: 'default'
+                        });
+                        $('.easyPaginateNav').wrap('<div class="pagination-wrapper"></div>');
+                        $('.easyPaginateNav a').on('click', function(e) {
+                            e.preventDefault();
+                        })
+                        $('.pagination-wrapper').insertBefore('footer');
                     }
 
-                    $('.vertically-align > img').loupe();
-
-                    // Remove previous pagination, and updated it for new requested products.
-                    $('.products').easyPaginate({
-                        paginateElement: $('.products > div'),
-                        elementsPerPage: 3,
-                        effect: 'default'
-                    });
-                    $('.easyPaginateNav').wrap('<div class="pagination-wrapper"></div>');
-                    $('.easyPaginateNav a').on('click', function(e) {
-                        e.preventDefault();
-                    })
-                    $('.pagination-wrapper').insertBefore('footer');
                 },
                 error: function(message) {
                     // Hide ajax loader.
