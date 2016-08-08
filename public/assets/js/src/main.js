@@ -8,13 +8,9 @@
         var submitKeywordButton = $('button[name="keyword"]');
         var currentFacebookUser = Cookies.get('Current_Facebook_User');
 
-        $(window).on('load', function(e){
-            if (window.location.hash == '#_=_') {
-                window.location.hash = ''; // for older browsers, leaves a # behind
-                history.pushState('', document.title, window.location.pathname); // nice and clean
-                e.preventDefault(); // no page reload
-            }
-        })
+        if (window.location.hash === '_=_') {
+            window.location.hash = '';
+        }
 
         // Auto type into search field for decoration.
         keywordInput.typed({

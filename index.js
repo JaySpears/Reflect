@@ -36,13 +36,14 @@ app.set('view engine', '.hbs');
 // Initializing passport.
 app.use(passport.initialize());
 
+app.use(passport.session({
+    secret: configAuth.facebookAuth.clientSecret
+}));
+
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+  done(null, user.id);
 });
 
-app.use(passport.session({
-    secret: 'idk'
-}));
 
 // Require User model.
 var User = require('./models/users');
