@@ -123,10 +123,21 @@ body {
     border: 2px solid $tertiary-color;
     background-color: white;
 }
-.form-wrapper {
+.form-wrapper,
+.search-helper {
     padding: 0;
     background-color: white;
 }
+
+.search-helper{
+    p{
+        text-align: center;
+        font-size: 14px;
+        padding-top: 10px;
+        color: $tertiary-color;
+    }
+}
+
 form {
     width: auto;
     margin: 0 auto;

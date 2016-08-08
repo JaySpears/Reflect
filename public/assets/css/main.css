@@ -103,9 +103,16 @@ body.wishlist-open {
   border: 2px solid #2f2e2e;
   background-color: white; }
 
-.form-wrapper {
+.form-wrapper,
+.search-helper {
   padding: 0;
   background-color: white; }
+
+.search-helper p {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 10px;
+  color: #2f2e2e; }
 
 form {
   width: auto;
