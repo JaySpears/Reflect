@@ -35,6 +35,11 @@ app.set('view engine', '.hbs');
 
 // Initializing passport.
 app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
 app.use(passport.session({
     secret: 'idk'
 }));
