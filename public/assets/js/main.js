@@ -77,6 +77,7 @@
                         $('.easyPaginateNav').wrap('<div class="pagination-wrapper"></div>');
                         $('.easyPaginateNav a').on('click', function(e) {
                             e.preventDefault();
+                            $('.zoom').magnify();
                         })
                         $('.pagination-wrapper').insertBefore('footer');
                     }
@@ -130,6 +131,7 @@
         $('.easyPaginateNav').wrap('<div class="pagination-wrapper"></div>');
         $('.easyPaginateNav a').on('click', function(e) {
             console.log('yes');
+            $('.zoom').magnify();
             e.preventDefault();
             if ($(window).width() <= 767) {
                 console.log('true');
