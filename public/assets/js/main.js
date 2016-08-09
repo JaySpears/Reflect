@@ -50,9 +50,9 @@
                     for (var i = 0; i < allProducts.products.length; i++) {
                         var brandName = '';
                         if (currentFacebookUser != undefined) {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
                         } else {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '">Buy Now!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '">Buy Now!</a></p></div>';
                         }
                     }
                     $('.products').html(requestedData);
@@ -66,7 +66,7 @@
                         for (var i = 0; i < allProductElements.length; i += 3) {
                             allProductElements.slice(i, i + 3).wrapAll("<div class='row'></div>");
                         }
-                        $('.vertically-align > img').loupe();
+                        $('.zoom').magnify();
 
                         // Remove previous pagination, and updated it for new requested products.
                         $('.products').easyPaginate({
@@ -89,7 +89,7 @@
                 }
             }).then(function() {
                 // Add zoom hover to product images.
-                $('.vertically-align > img').loupe();
+                $('.zoom').magnify();
                 var addToWishlist = $('.wishlist');
                 addToWishlist.on('click', function(e) {
                     console.log('clicked');
@@ -164,7 +164,8 @@
         $('.pagination-wrapper').insertBefore('footer');
 
         // Add zoom hover to product images.
-        $('.vertically-align > img').loupe();
+
+        $('.zoom').magnify();
         if (currentFacebookUser != undefined) {
             var userFirstName = currentFacebookUser.split(' ');
             var addToWishlist = $('.wishlist');

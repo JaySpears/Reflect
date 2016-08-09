@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="public/bower_components/normalize-css/normalize.css" charset="utf-8">
     <link rel="stylesheet" href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" charset="utf-8">
+    <link rel="stylesheet" href="public/assets/css/vendors/magnify.css">
     <link rel="stylesheet" href="public/assets/css/main.min.css" charset="utf-8">
 </head>
 <body>
@@ -41,7 +42,7 @@
                             <div class="col-md-4">
                                 <div class="image-wrapper">
                                     <div class="vertically-align">
-                                        <img src="{{this.image.sizes.Best.url}}" alt="Product Image" />
+                                        <img class="zoom" src="{{this.image.sizes.Best.url}}" alt="Product Image" data-magnify-src={{this.image.sizes.Best.url}} />
                                     </div>
                                 </div>
                                 <p class="product-name">{{this.name}}</p>
@@ -74,7 +75,7 @@
         </div>
     </div>
     <script src="public/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
-    <script src="public/assets/js/vendors/jquery.loupe.min.js" charset="utf-8"></script>
+    <script src="public/assets/js/vendors/jquery.magnify.js" charset="utf-8"></script>
     <script src="public/assets/js/vendors/jquery.easyPaginate.js" charset="utf-8"></script>
     <script src="public/bower_components/typed.js/dist/typed.min.js" charset="utf-8"></script>
     <script src="public/bower_components/jquery-ui/jquery-ui.min.js" charset="utf-8"></script>
