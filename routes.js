@@ -61,6 +61,7 @@ app.post('/api/add-wishlist', function(req, res) {
     }
     // Check to see if product exists already. Don't want duplications.
     wishlistMiddleware.checkIfProductExistsMiddleware(currentUserUID ,req.body.wishListProduct, doesProductExist);
+    res.send();
 });
 
 // Remove wishlist product from wishlist table based on UID.
