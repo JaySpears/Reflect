@@ -10,6 +10,7 @@ app.get('/', function(req, res) {
         function(next) {
             request('http://api.shopstyle.com/api/v2/products?fts=snapbacks&pid=uid2201-34493899-95&offset=0&limit=100', function(error, response, body) {
                 if (!error && response.statusCode == 200) {
+                    console.log(body);
                     products = body;
                     next(null, JSON.parse(products));
                 }

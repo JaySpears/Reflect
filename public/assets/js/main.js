@@ -45,14 +45,15 @@
 
                     // Add new requested products to the DOM.
                     var allProducts = data;
+                    console.log(data);
                     var requestedData = '';
                     $('.products').empty();
                     for (var i = 0; i < allProducts.products.length; i++) {
                         var brandName = '';
                         if (currentFacebookUser != undefined) {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].clickUrl + '"><b>Buy Now!</b></a></p><p><a href="#" class="wishlist">Add to Wishlist!</a></p></div>';
                         } else {
-                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].pageUrl + '">Buy Now!</a></p></div>';
+                            requestedData += '<div class="col-md-4"><div class="image-wrapper"><div class="vertically-align"><img class="zoom" src="' + allProducts.products[i].image.sizes.Best.url + '" data-magnify-src="' + allProducts.products[i].image.sizes.Best.url + '" alt="Product Image" /></div></div><p class="product-name">' + allProducts.products[i].name + '</p><p><i>' + allProducts.products[i].priceLabel + '</i> | <a class="buy-link" target="_blank" href="' + allProducts.products[i].clickUrl + '">Buy Now!</a></p></div>';
                         }
                     }
                     $('.products').html(requestedData);
