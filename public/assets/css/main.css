@@ -215,6 +215,13 @@ form {
         margin-bottom: 0px; } }
     .container .products .buy-link {
       color: #43bdec; }
+    .container .products .wishlist-checkmark i {
+      display: none;
+      color: #2de32d;
+      font-size: 20px;
+      position: absolute;
+      left: 85px;
+      bottom: 24px; }
     .container .products .wishlist {
       position: relative;
       top: 5px;

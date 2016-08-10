@@ -103,7 +103,7 @@
                         wishListProductPrice: wishlistParentWrapper.find('i').html(),
                         wishListProductUrl: wishlistParentWrapper.find('.buy-link').attr('href')
                     }
-                    console.log(wishlistData);
+                    $(this).siblings('i').show();
                     $.ajax({
                         url: "/api/add-wishlist",
                         method: "POST",
@@ -153,6 +153,7 @@
                         wishListProductPrice: wishlistParentWrapper.find('i').html(),
                         wishListProductUrl: wishlistParentWrapper.find('.buy-link').attr('href')
                     }
+                    $(this).siblings('i').show();
                     $.ajax({
                         url: "/api/add-wishlist",
                         method: "POST",
@@ -187,6 +188,7 @@
                     wishListProductPrice: wishlistParentWrapper.find('i').html(),
                     wishListProductUrl: wishlistParentWrapper.find('.buy-link').attr('href')
                 }
+                $(this).siblings('i').show();
                 $.ajax({
                     url: "/api/add-wishlist",
                     method: "POST",

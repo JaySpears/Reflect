@@ -261,6 +261,16 @@ form {
         .buy-link{
             color: $primary-color;
         }
+        .wishlist-checkmark {
+            i{
+                display: none;
+                color: #2de32d;
+                font-size: 20px;
+                position: absolute;
+                left: 85px;
+                bottom: 24px;
+            }
+        }
         .wishlist{
             position: relative;
             top: 5px;
