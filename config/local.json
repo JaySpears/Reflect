@@ -1,7 +1,0 @@
-{
-    "db_hostname": "localhost",
-    "db_username": "root",
-    "db_pass": "root",
-    "db_database": "reflect",
-    "app_url": "localhost:3000"
-}
